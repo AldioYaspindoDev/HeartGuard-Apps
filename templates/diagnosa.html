@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Diagnosa | HeartGuard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <style>
+    body { font-family: "Roboto", sans-serif; }
+    @font-face {
+      font-family: 'Nasalization';
+      src: url('font/Nasalization Rg.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+    .logo { font-family: 'Nasalization', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  
+ <!-- Navbar -->
+ <header class="flex items-center justify-between px-[10rem] py-4">
+    <div class="flex items-center space-x-2">
+      <h1 class="logo font-bold text-xl">HeartGuard</h1>
+    </div>
+    <nav class="flex space-x-[68px] text-black font-medium bg-[#ECECEC] p-[16px] rounded-[8px]">
+        <a href="/" class="hover:text-gray-400">Beranda</a>
+        <a href="/diagnosis" class="hover:text-gray-400">Diagnosa</a>
+        <a href="/about" class="hover:text-gray-400">About Us</a>
+    </nav>
+    <div class="flex space-x-4">
+      <button class="border border-red-500 text-black px-4 py-2 rounded-[8px] hover:bg-red-500 hover:text-white transition">
+        Log In
+      </button>
+      <button class="border bg-red-500 text-white px-4 py-2 rounded-[8px] hover:bg-red-700 transition">
+        Sign Up
+      </button>
+    </div>
+  </header>
+  
+  <!-- Debug Section - can be removed in production -->
+  <!-- <div class="max-w-4xl mx-auto mt-4 p-2 bg-gray-100 rounded-lg text-sm">
+    <p>Gejala Yang akan di Diagnosa: {{ session.get('gejala', []) }}</p>
+  </div> -->
+  
+  <!-- Form Diagnosa Gejala -->
+  <section class="max-w-4xl mx-auto mt-8 bg-white shadow-lg rounded-xl p-10">
+    <h2 class="text-3xl font-bold mb-6 text-center">Form Diagnosa Penyakit Jantung</h2>
+    <p class="text-center text-gray-400">Silahkan centang kotak di bawah ini jika Anda mengalami gejala-gejala berikut.</p>
+    <p class="text-center mb-6 text-gray-400">Halaman {{ page }} dari {{ total_pages }}</p>
+    
+    <!-- Daftar Gejala -->
+    <form action="/diagnosis?page={{ page }}" method="post" class="space-y-6">
+      {% for gejala in gejala_list %}
+      <div>
+        <label for="{{ gejala }}" class="block text-lg font-medium mb-2 cursor-pointer hover:text-red-500">
+          <input type="checkbox" name="{{ gejala }}" id="{{ gejala }}" value="on" 
+                 {% if gejala in session.get('gejala', []) %}checked{% endif %}
+                 class="mr-2 w-4 h-4"> 
+          {{ gejala }}
+        </label>
+      </div>
+      {% endfor %}
+      
+      <!-- Navigasi -->
+      <div class="flex justify-center gap-4 mt-8">
+        {% if page > 1 %}
+        <button type="submit" name="action" value="previous" class="bg-gray-300 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-400 transition font-medium">Previous</button>
+        {% endif %}
+        
+        {% if page < total_pages %}
+        <button type="submit" name="action" value="next" class="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition font-medium">
+          Next
+        </button>
+        {% endif %}
+        
+        <!-- Tombol Diagnosa hanya muncul di halaman terakhir -->
+        {% if page == total_pages %}
+        <button type="submit" name="action" value="diagnose" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition font-medium">
+          Diagnosa
+        </button>
+        {% endif %}
+      </div>
+    </form>
+  </section>
+  
+<footer class="bg-[#161616] w-full py-8 text-white px-[9rem] mt-[8rem]">
+  <!-- Bagian Atas Footer -->
+  <div class="container mx-auto grid grid-cols-2 md:grid-cols-5 gap-5 mb-[2rem]">
+    
+    <!-- Brand -->
+    <div>
+      <h1 class="logo font-bold text-[35px] mb-4">HeartGuard</h1>
+    </div>
+
+    <!-- Spacer -->
+    <div></div>
+
+    <!-- Informasi -->
+    <div>
+      <h1 class="font-semibold text-xl mb-2">Informasi</h1>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#" class="hover:underline">Tentang Kami</a></li>
+        <li><a href="#" class="hover:underline">Hubungi Kami</a></li>
+        <li><a href="#" class="hover:underline">Kebijakan Privasi</a></li>
+        <li><a href="#" class="hover:underline">Kontak Kami</a></li>
+        <li><a href="#" class="hover:underline">Ketentuan Pengguna</a></li>
+        <li><a href="#" class="hover:underline">Pusat Bantuan</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Us -->
+    <div>
+      <h1 class="font-semibold text-xl mb-2">Contact Us</h1>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#" class="hover:underline">WhatsApp</a></li>
+        <li><a href="#" class="hover:underline">Instagram</a></li>
+        <li><a href="#" class="hover:underline">Facebook</a></li>
+        <li><a href="#" class="hover:underline">TikTok</a></li>
+        <li><a href="#" class="hover:underline">Telegram</a></li>
+        <li><a href="#" class="hover:underline">YouTube</a></li>
+      </ul>
+    </div>
+
+    <!-- Lainnya -->
+    <div>
+      <h1 class="font-semibold text-xl mb-2">Lainnya</h1>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#" class="hover:underline">Syarat & Ketentuan</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="border-gray-600 mb-4">
+
+  <!-- Bagian Bawah Footer -->
+  <div class="flex justify-between items-center flex-wrap gap-4">
+    <p class="text-sm text-gray-400">&copy; 2025 Muhamad Aldio Yaspindo. Semua hak cipta dilindungi.</p>
+
+    <div class="flex gap-4 text-xl">
+      <a href="#" class="hover:text-green-400"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+      <a href="#" class="hover:text-pink-400"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+      <a href="#" class="hover:text-blue-500"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+      <a href="#" class="hover:text-sky-400"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
