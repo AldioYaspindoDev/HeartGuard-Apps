@@ -1,5 +1,6 @@
 from app.models.user_model import User
 from app import db
+from app.utils.security import Security
 
 class UserRepository:
     
@@ -17,11 +18,12 @@ class UserRepository:
     
     @staticmethod
     def create(data):
+        hashed_pw = Security.hashed_password(data['password'])
         user = User(
             username = data['username'],
             email = data['email'],
             nohp = data['nohp'],
-            password = data['password'],
+            password = hashed_pw,
         )
         db.session.add(user)
         db.session.commit()

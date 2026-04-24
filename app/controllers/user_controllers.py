@@ -1,5 +1,6 @@
 from flask import request, jsonify
 from app.repositories.user_repository import UserRepository
+from app.utils.security import Security
 
 class UserControllers:
     @staticmethod
@@ -10,6 +11,20 @@ class UserControllers:
         
         user = UserRepository.create(data)
         return jsonify({"message" : "Berhasil membuat user", "user_id": user.id}), 201
+    
+    @staticmethod
+    def login():
+        data = request.get_json()
+        user = UserRepository.get_by_email(data['email'])
+        if user and Security.verify_password(user.password, data['password']):
+            token = Security.generate_token(user.id)
+            return jsonify({
+                "message": "selamat anda berhasil login",
+                "access_token": token,
+                "user" : {"id": user.id, "username": user.username}
+            }), 200
+
+        return jsonify({"message": "kredensial tidak valid"}), 401
     
     @staticmethod
     def get_all_user():

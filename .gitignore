@@ -4,10 +4,5 @@
 env/
 venv/
 instance/
-
-# Python logs
 *.pyc
 __pycache__/
-
-# ML Models & Scalers (Jika ukurannya sangat besar)
-# app/models/ml_model/*.pkl
