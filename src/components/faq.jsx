@@ -27,28 +27,28 @@ export default function Faq() {
     <div className="py-24 bg-slate-50/50">
       <div className="px-8 md:px-16 lg:px-24 flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-start max-w-7xl mx-auto">
         <div className="w-full lg:w-5/12 flex justify-center">
-          <img src="/assets/2.jpg" alt="Gambar Jantung" className="w-full max-w-[45rem] h-auto lg:h-[35rem] rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100" />
+          <img src="/assets/2.jpg" alt="Gambar Jantung" className="w-full max-w-180 h-auto lg:h-140 rounded-4xl object-cover shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100" />
         </div>
 
         <div className="space-y-6 flex-1 w-full">
-          <div className="bg-slate-800 w-full p-8 md:p-10 rounded-[2rem] shadow-xl">
-            <h1 className="text-2xl md:text-3xl font-bold text-slate-50 leading-snug">
+          <div className="bg-slate-800 w-full p-8 md:p-10 rounded-4xl shadow-xl">
+            <h1 className="text-xl font-bold text-slate-50 leading-snug">
               Lalu Bagaimana Cara Menjaga Kesehatan Jantung Kita?
             </h1>
-            <p className="text-slate-300 mt-4 text-lg">
+            <p className="text-slate-300 mt-2 text-sm">
               Berikut adalah beberapa pertanyaan tentang bagaimana cara kita untuk menjaga kesehatan jantung.
             </p>
           </div>
 
-          <div className="space-y-4 pt-4">
+          <div className="space-y-4 pt-2">
             {faqs.map((faq, index) => (
               <div key={index} className="relative z-10">
                 <div
                   onClick={() => toggleAnswer(index)}
-                  className={`bg-white border w-full min-h-[5rem] p-6 flex justify-between items-center cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md ${openIndex === index ? 'rounded-t-[1.5rem] border-blue-200 shadow-md z-20 relative' : 'rounded-[1.5rem] border-slate-200 hover:border-blue-200'}`}
+                  className={`bg-white border w-full min-h-20aaaaaaa p-6 flex justify-between items-center cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md ${openIndex === index ? 'rounded-t-3xl border-blue-200 shadow-md z-20 relative' : 'rounded-3xl border-slate-200 hover:border-blue-200'}`}
                 >
                   <p className="font-semibold text-slate-800 text-lg pr-4">{faq.question}</p>
-                  <div className={`w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center transition-colors ${openIndex === index ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-500'}`}>
+                  <div className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center transition-colors ${openIndex === index ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-500'}`}>
                     <i
                       className={`fa fa-chevron-down transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
                       aria-hidden="true"
@@ -56,7 +56,7 @@ export default function Faq() {
                   </div>
                 </div>
                 {openIndex === index && (
-                  <div className="faq-answer bg-slate-50/80 backdrop-blur-sm px-8 py-6 rounded-b-[1.5rem] border-x border-b border-blue-100 text-base text-slate-600 shadow-md relative z-10 -mt-2 pt-8">
+                  <div className="faq-answer bg-slate-50/80 backdrop-blur-sm px-8 py-6 rounded-b-3xl border-x border-b border-blue-100 text-base text-slate-600 shadow-md relative z-10 -mt-2 pt-8">
                     {faq.answer}
                   </div>
                 )}

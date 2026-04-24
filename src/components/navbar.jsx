@@ -19,12 +19,12 @@ export default function Navbar() {
         </a>
       </nav>
       <div className="flex space-x-3">
-        <button className="text-sm font-medium border border-slate-200 text-slate-700 px-5 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">
+        <a href="/Login" className="text-sm font-medium border border-slate-200 text-slate-700 px-5 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">
           Log In
-        </button>
-        <button className="text-sm font-medium border border-transparent bg-blue-600 text-white px-5 py-2.5 rounded-xl hover:bg-blue-700 shadow-sm transition-colors">
+        </a>
+        <a href="/Register" className="text-sm font-medium border border-transparent bg-blue-600 text-white px-5 py-2.5 rounded-xl hover:bg-blue-700 shadow-sm transition-colors">
           Sign Up
-        </button>
+        </a>
       </div>
     </header>
   );
