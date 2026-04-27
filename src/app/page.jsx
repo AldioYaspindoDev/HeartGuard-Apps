@@ -3,6 +3,7 @@ import HeroSection from "@/components/herosection";
 import Featured from "@/components/featured";
 import Featured2 from "@/components/featured2";
 import Faq from "@/components/faq";
+import CTA from "@/components/cta";
 import Footer from "@/components/footer";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Featured />
       <Featured2 />
       <Faq />
+      <CTA />
       <Footer />
     </div>
   );

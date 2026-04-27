@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { motion } from 'motion/react';
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -25,13 +26,19 @@ export default function Faq() {
 
   return (
     <div className="py-24 bg-slate-50/50">
+      <motion.div
+        initial={{ opacity: 0, x: -30}}
+        whileInView={{ opacity:1, x:0 }}
+        transition={{ duration: 0.8}}
+      >
       <div className="px-8 md:px-16 lg:px-24 flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-start max-w-7xl mx-auto">
         <div className="w-full lg:w-5/12 flex justify-center">
           <img src="/assets/2.jpg" alt="Gambar Jantung" className="w-full max-w-180 h-auto lg:h-140 rounded-4xl object-cover shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100" />
         </div>
+     
+      <div className="space-y-6 flex-1 w-full">
+        <div className="bg-slate-800 w-full p-8 md:p-10 rounded-4xl shadow-xl">
 
-        <div className="space-y-6 flex-1 w-full">
-          <div className="bg-slate-800 w-full p-8 md:p-10 rounded-4xl shadow-xl">
             <h1 className="text-xl font-bold text-slate-50 leading-snug">
               Lalu Bagaimana Cara Menjaga Kesehatan Jantung Kita?
             </h1>
@@ -65,6 +72,7 @@ export default function Faq() {
           </div>
         </div>
       </div>
+       </motion.div>
     </div>
   );
 }

@@ -1,6 +1,15 @@
+"use client";
+import { motion} from "motion/react";
+
 export default function Featured(){
     return (
         <div className="py-24">
+            <motion.div
+            initial={{ opacity: 0, x: -30}}
+            whileInView={{ opacity: 1, x:0 }}
+            transition={{ duration: 2}}
+
+            >
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 px-8 md:px-16 lg:px-24">
                 <div className="w-full lg:w-1/2">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 tracking-tight leading-tight">Apa itu HeartGuard?</h1>
@@ -9,10 +18,17 @@ export default function Featured(){
                     <p>HeartGuard adalah platform digital berbasis teknologi yang dirancang untuk membantu Anda mendeteksi secara dini potensi penyakit jantung melalui analisis gejala secara cepat, aman, dan akurat. Dengan antarmuka yang ramah pengguna dan didukung oleh algoritma cerdas, HeartGuard hadir sebagai solusi skrining awal yang dapat diakses kapan saja dan di mana saja.</p>
                 </div>
             </div>
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, x: 30}}
+                whileInView={{ opacity: 1, x:0 }}
+                transition={{ duration: 2}}
+            >
 
             <div className="px-8 md:px-16 lg:px-24 flex flex-col lg:flex-row gap-12 lg:gap-20 mt-32 items-center">
                 <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-                    <img src="/assets/1.jpg" alt="Health Care" className="w-full max-w-[500px] rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] object-cover aspect-[4/3]"/>
+                    <img src="/assets/1.jpg" alt="Health Care" className="w-full max-w-125 rounded-4xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] object-cover aspect-4/3"/>
                 </div>
 
                 <div className="w-full lg:w-1/2 space-y-6">
@@ -25,6 +41,7 @@ export default function Featured(){
                     </p>
                 </div>
             </div>
+            </motion.div>
         </div>
     )
 }
